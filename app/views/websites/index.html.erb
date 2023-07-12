@@ -1,0 +1,11 @@
+<h1>Websites#index</h1>
+<p>Find me in app/views/websites/index.html.erb</p>
+
+<% @websites.each do |website| %>
+  <%= render "website_row", website: website %>
+<% end %>
+
+<div data-controller="clipboard"">
+  PIN: <input data-clipboard-target="source" type="text" value="1234">
+  <button data-action="clipboard#copy">Copy to Clipboard</button>
+</div>
