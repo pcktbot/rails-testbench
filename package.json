@@ -1,16 +1,21 @@
 {
   "name": "rails-testbench",
   "version": "1.0.0",
-  "description": "This README would normally document whatever steps are necessary to get the application up and running.",
+  "author": "",
   "main": "index.js",
+  "description": "This README would normally document whatever steps are necessary to get the application up and running.",
   "directories": {
     "lib": "lib",
     "test": "test"
   },
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
   "keywords": [],
-  "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "scripts": {
+    "bundle:libs": "for file in ./public/javascripts/lib/widget/edit/src*.js; do parcel build $file --out-dir ./public/javascripts/lib/widget/edit --no-source-maps; done"
+  },
+  "dependencies": {
+    "@babel/preset-env": "^7.23.2",
+    "core-js": "^3.33.2",
+    "parcel": "^2.10.2"
+  }
 }
