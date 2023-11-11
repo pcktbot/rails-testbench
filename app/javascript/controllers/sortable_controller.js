@@ -1,26 +1,33 @@
 import { Controller } from '@hotwired/stimulus';
 
 export default class extends Controller {
-  static targets = ['list'];
+  static targets = [
+    'list',
+    'toggle',
+    'content',
+    'scroll'
+  ];
+
+  static values = {
+    disabled: {
+                type   : Boolean,
+                default: false
+              }
+  };
 
   initialize () {
     this.sortable = new Sortable(this.listTarget, {
-      animation: 150,
+      animation : 150,
+      disabled  : this.disabledValue,
       ghostClass: 'ghost-blue',
-      draggable: '.sortable-list-item',
-      onUpdate: function (event) {
-        this.onUpdate(event);
-      }.bind(this)
+      draggable : '.sortable-list-item',
+      onUpdate  : function (event) {this.onUpdate(event);}.bind(this)
     });
+    this.toggleTarget.checked = this.disabledValue;
   }
 
   onUpdate (event) {
     if (event) console.log('#onUpdate', event, this);
-    console.log('#onUpdate', {
-      current_list: this.currentList(),
-      current_length: this.currentLength(),
-      current_ids: this.currentIds()
-    });
   }
 
   currentList () {
@@ -36,9 +43,8 @@ export default class extends Controller {
   }
 
   add (widget) {
-    // api request
-    widget.name = 'Content Stripe';
     widget.id = generateFiveDigitNumber();
+    widget.name = `${widget.id}`;
     const markup = `
     <li class="sortable-list-item" data-sortable-id="${widget.id}">
       <span class="sortable-handle">☰</span>
@@ -47,17 +53,36 @@ export default class extends Controller {
     </li>
     `;
     this.listTarget.insertAdjacentHTML('beforeend', markup);
+    this.scroll();
     this.onUpdate();
   }
 
+  findParent (event, selector) {
+    return event.target.closest(selector);
+  }
+
   remove (event) {
-    // find parent by css selector
-    const parent = event.target.closest('.sortable-list-item');
+    const parent = this.findParent(event, '.sortable-list-item');
     parent.classList.add('hidden');
     parent.addEventListener('transitionend', () => {
       parent.remove();
     }, { once: true });
     this.onUpdate();
+  }
+
+  disabledValueChanged () {
+    this.contentTarget.classList.toggle('disabled', this.disabledValue);
+    this.sortable.option('disabled', this.disabledValue);
+  }
+  toggle (event) {
+    this.disabledValue = event.target.checked;;
+  }
+
+  scroll () {
+    this.scrollTarget.scrollTo({
+      top: this.scrollTarget.scrollHeight,
+      behavior: 'smooth'
+    });
   }
 
   edit (event) {

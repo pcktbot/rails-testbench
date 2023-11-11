@@ -1,0 +1,50 @@
+<div class="page-container">
+  <aside class="page-sidebar">
+    <%= render "components/sortable_list" %>
+  </aside>
+  <div class="page-content">
+    <header class="fixed page-header">
+      Header
+    </header>
+    <section class="scroll page-section">
+      <%= render "components/text_editor" %>
+    </section>
+  </div>
+</div>
+
+<style>
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+:root {
+  --blue: #2e486c;
+  --lt-blue: #afd7e6;
+}
+
+.page-container {
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  border: 2px solid var(--blue);
+}
+
+.page-content {
+  border: 2px solid var(--lt-blue);
+  flex-grow: 1;
+}
+.page-header {
+  border-bottom: 1px solid var(--lt-blue);
+  min-height: 80px;
+}
+.fixed {
+  overflow: hidden;
+}
+.scroll {
+  height: 100%;
+  overflow-y: scroll;
+}
+.page-section {
+  padding: 1.5rem;
+}
