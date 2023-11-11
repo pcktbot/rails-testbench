@@ -1,0 +1,22 @@
+<div class="editor-container">
+  <%= render "components/text_editor" %>
+</div>
+
+<style>
+.editor-container {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start
+  justify-content: stretch;
+  border: 4px solid red;
+  position: relative;
+}
+
+.saving-status {
+  position: absolute;
+  right: 0;
+}
+
+</style>

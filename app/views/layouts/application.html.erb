@@ -6,20 +6,28 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-
-    <!-- UI framework import -->
     <link rel="stylesheet" href="https://cs-cdn.realpage.com/RAUL/raul3/0.36.2/raul/raul.css">
-    <script type="module" src="https://cs-cdn.realpage.com/RAUL/raul3/0.36.2/raul/raul.esm.js"></script>
-    <script nomodule src="https://cs-cdn.realpage.com/RAUL/raul3/0.36.2/raul/raul.js"></script>
-    <!-- End UI framework import -->
-    <% yield :head %>
+    <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
-    <%= javascript_importmap_tags %>
+
   </head>
 
   <body>
+
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
+
     <%= yield %>
+
+
+    <script type="module" src="https://cs-cdn.realpage.com/RAUL/raul3/0.36.2/raul/raul.esm.js"></script>
+    <script nomodule src="https://cs-cdn.realpage.com/RAUL/raul3/0.36.2/raul/raul.js"></script>
+    
+    <%= javascript_importmap_tags %>
+    
     <%= yield :page_specific_javascript %>
+s
+
   </body>
 </html>

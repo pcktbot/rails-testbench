@@ -1,15 +1,5 @@
 <div class="page-container">
-  <aside class="page-sidebar">
     <%= render "components/sortable_list" %>
-  </aside>
-  <div class="page-content">
-    <header class="fixed page-header">
-      Header
-    </header>
-    <section class="scroll page-section">
-      <%= render "components/text_editor" %>
-    </section>
-  </div>
 </div>
 
 <style>
@@ -32,7 +22,7 @@
 
 .page-content {
   border: 2px solid var(--lt-blue);
-  flex-grow: 1;
+  overflow-y: auto;
 }
 .page-header {
   border-bottom: 1px solid var(--lt-blue);
