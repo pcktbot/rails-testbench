@@ -1,4 +1,5 @@
 import { Controller } from "@hotwired/stimulus";
+import { set } from "core-js/core/dict";
 import Quill from 'quill';
 export default class extends Controller {
   initialize () {
@@ -17,9 +18,30 @@ export default class extends Controller {
     });
     // how do you handle not saving if no changes?
     
-    setInterval(() => {
-      let content = this.quill.root.innerHTML;
-      console.log(JSON.stringify(content));
+    this.setInterval();
+  }
+
+  connect () {
+    console.log('#connect', this.element);
+  }
+
+  disconnect () {
+    console.log('#disconnect', this.element);
+  }
+
+  save () {
+    let content = this.quill.root.innerHTML;
+    console.log(JSON.stringify(content));  
+  }
+
+  clearInterval () {
+    clearInterval(this.interval);
+  }
+
+  setInterval () {
+    this.interval = setInterval(() => {
+      this.save();
     }, 5000);
   }
+  
 }
