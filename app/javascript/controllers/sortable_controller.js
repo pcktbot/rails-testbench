@@ -1,5 +1,4 @@
-import { Controller } from '@hotwired/stimulus';
-
+import { Controller } from "@hotwired/stimulus";
 export default class extends Controller {
   static targets = [
     'list',
@@ -15,7 +14,11 @@ export default class extends Controller {
               }
   };
 
+  connect () {
+    console.log('#connect', this);
+  }
   initialize () {
+    console.log('#initialize', this, Sortable);
     this.sortable = new Sortable(this.listTarget, {
       animation : 150,
       disabled  : this.disabledValue,
@@ -74,6 +77,7 @@ export default class extends Controller {
     this.contentTarget.classList.toggle('disabled', this.disabledValue);
     this.sortable.option('disabled', this.disabledValue);
   }
+
   toggle (event) {
     this.disabledValue = event.target.checked;;
   }

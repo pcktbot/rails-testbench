@@ -8,6 +8,8 @@ class DocumentsController < ApplicationController
 
   # GET /documents/1 or /documents/1.json
   def show
+    @documents = current_user.documents
+    @document = @documents.find(params[:id])
   end
 
   # GET /documents/new

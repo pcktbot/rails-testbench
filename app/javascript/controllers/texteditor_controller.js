@@ -29,9 +29,20 @@ export default class extends Controller {
     console.log('#disconnect', this.element);
   }
 
-  save () {
+  async save () {
     let content = this.quill.root.innerHTML;
-    console.log(JSON.stringify(content));  
+    console.log('#save', JSON.stringify(content));  
+    const res = await fetch(`/api/text_editor/${this.idValue}`, {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json',
+        'X-CSRF-Token': document.querySelector('[name="csrf-token"]').content
+      },
+      body: JSON.stringify({data: content}),
+    });
+    if (res.ok) this.clearInterval();
+    const data = await res.json();
+    console.log('#save', data);
   }
 
   clearInterval () {
@@ -41,7 +52,7 @@ export default class extends Controller {
   setInterval () {
     this.interval = setInterval(() => {
       this.save();
-    }, 5000);
+    }, 15000);
   }
   
 }

@@ -1,5 +1,10 @@
 <header id="toolbar" class="editor-header">
-  <span id="messages" class="saving-status">Saving...<%= params.inspect %></span>
+  <span id="messages" class="saving-status"><%= @name %></span>
 </header>
 
-<div data-controller="texteditor" id="editor" class=""></div>
+<div
+  data-controller="texteditor"
+  data-texteditor-id-value="<%= @id %>"
+  id="editor"
+  class=""
+></div>

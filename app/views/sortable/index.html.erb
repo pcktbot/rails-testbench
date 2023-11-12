@@ -1,5 +1,7 @@
+<script src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.0/Sortable.min.js" async></script>
+
 <div class="page-container">
-    <%= render "components/sortable_list" %>
+  <%= render "components/sortable_list" %>
 </div>
 
 <style>
@@ -16,6 +18,8 @@
   overflow: hidden;
   display: flex;
   flex-direction: row;
+  align-items: center;
+  justify-content: center;
   width: 100%;
   border: 2px solid var(--blue);
 }
@@ -38,3 +42,4 @@
 .page-section {
   padding: 1.5rem;
 }
+</style>
