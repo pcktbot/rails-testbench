@@ -3,7 +3,7 @@ class DocumentsController < ApplicationController
 
   # GET /documents or /documents.json
   def index
-    @documents = Document.all
+    @documents = current_user.documents
   end
 
   # GET /documents/1 or /documents/1.json

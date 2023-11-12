@@ -1,7 +1,7 @@
 import { Controller } from "@hotwired/stimulus";
-import { set } from "core-js/core/dict";
 import Quill from 'quill';
 export default class extends Controller {
+  static values = { id: Number };
   initialize () {
     console.log('#initialize', this.element);
     this.quill = new Quill(this.element, {
