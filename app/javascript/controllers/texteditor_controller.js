@@ -17,7 +17,14 @@ export default class extends Controller {
       }
     });
     // how do you handle not saving if no changes?
-    
+    this.checkbox = document.querySelector('#toggle-auto-save');
+    this.checkbox.addEventListener('change', (event) => {
+      if (event.target.checked) {
+        this.setInterval();
+      } else {
+        this.clearInterval();
+      }
+    });
     this.setInterval();
   }
 

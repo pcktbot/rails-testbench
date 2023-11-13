@@ -1,0 +1,31 @@
+<span class="hover-detection"></span>
+<raul-aside data-controller="aside" id="primary-nav" size="small">
+  <raul-aside-header>
+    <raul-aside-header-title>
+      <h1>Pages</h1>
+    </raul-aside-header-title>
+  </raul-aside-header>
+  <div class="list">
+    <ul>
+      <li><%= link_to "Home", root_path, class: "list-item" %></li>
+      <li><%= link_to "Documents", documents_path, class: "list-item" %></li>
+      <li><%= link_to "New Document", new_document_path, class: "list-item" %></li>
+    </ul>
+  </div>
+</raul-aside>
+
+<style>
+.hover-detection {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  width: 2rem;
+  border: 1px solid red;
+  background-color: transparent;
+  transition: background-color 400ms ease-in;
+}
+.hover-detection:hover {
+  background-color: red;
+}
+</style>

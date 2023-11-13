@@ -1,5 +1,14 @@
 <header id="toolbar" class="editor-header">
-  <span id="messages" class="saving-status"><%= @name %></span>
+  <div class="checkbox-group">
+    <input type="checkbox" id="toggle-auto-save" class="">
+    <label for="toggle-auto-save" class="">Auto Save</label>
+  </div>
+  <div>
+    <%= @name %>
+    <div class="document-details">
+    <p>Created At: <span><%= @document.created_at.strftime("%B %d, %Y") %></span></p>
+    <p>Updated At: <span><%= @document.updated_at.strftime("%B %d, %Y") %></span></p>
+    </div>
 </header>
 
 <div
@@ -7,4 +16,4 @@
   data-texteditor-id-value="<%= @id %>"
   id="editor"
   class=""
-></div>
+><@= sanitize @document[:data] %></div>
