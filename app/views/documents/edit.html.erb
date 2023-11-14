@@ -1,10 +1,27 @@
-<h1>Editing document</h1>
+<div class="show-document">
 
-<%= render "form", document: @document %>
+  <h1>Editing document</h1>
 
-<br>
+  <%= render "form", document: @document %>
 
-<div>
-  <%= link_to "Show this document", @document %> |
-  <%= link_to "Back to documents", documents_path %>
+  <br>
+
+  <div>
+    <%= link_to "Show this document", @document, class: "btn tumeric" %>
+    <%= link_to "Back to documents", documents_path, class: "btn cadet-blue" %>
+  </div>
+
 </div>
+
+<style>
+.show-document {
+  border: 1px solid var(--cadet-blue);
+  padding: 1em;
+  margin: 1em 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+</style>

@@ -24,7 +24,7 @@ export default class extends Controller {
       disabled  : this.disabledValue,
       ghostClass: 'ghost-blue',
       draggable : '.sortable-list-item',
-      onUpdate  : function (event) {this.onUpdate(event);}.bind(this)
+      onUpdate  : function (event) {this.onUpdate(event);}.bind(this),
     });
     this.toggleTarget.checked = this.disabledValue;
   }
@@ -49,11 +49,11 @@ export default class extends Controller {
     widget.id = generateFiveDigitNumber();
     widget.name = `${widget.id}`;
     const markup = `
-    <li class="sortable-list-item" data-sortable-id="${widget.id}">
-      <span class="sortable-handle">☰</span>
-      <a data-action="click->sortable#edit" class="flex-grow sortable-open">${widget.name}</a>
-      <button class="btn circle" data-action="click->sortable#remove" data-sortable-target="removeButton">♺</button>
-    </li>
+      <li class="sortable-list-item" data-sortable-id="${widget.id}">
+        <span class="sortable-handle">☰</span>
+        <a data-action="click->sortable#edit" class="flex-grow sortable-open">${widget.name}</a>
+        <button class="btn circle" data-action="click->sortable#remove" data-sortable-target="removeButton">♺</button>
+      </li>
     `;
     this.listTarget.insertAdjacentHTML('beforeend', markup);
     this.scroll();

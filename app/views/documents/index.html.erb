@@ -2,7 +2,7 @@
 
 <header class="documents-header">
   <h1>Documents</h1>
-  <%= link_to "New document", new_document_path, class: "btn" %>
+  <%= link_to "New document", new_document_path, class: "btn tumeric" %>
 </header>
 
 <section class="documents-section">
@@ -17,81 +17,8 @@
           <p>Updated At: <span><%= document.updated_at.strftime("%B %d, %Y") %></span></p>
         </div>
       </div>
-      <%= link_to "Show this document", document, class: "btn" %>
+      <%= link_to "Show this document", document, class: "btn cadet-blue" %>
     </div>
     <% end %>
   </div>
 </section>
-
-
-<style>
-:root {
-  --cadet-blue: #a5afc0;
-  --san-juan-blue: #2e486c;
-  --french-gray: #d3d4cd;
-}
-
-#documents {
-  border: 1px solid var(--cadet-blue);
-  padding: 1em;
-  margin: 1em 0;
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  grid-gap: 1em;
-}
-
-.documents-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1rem 2rem;
-
-}
-.documents-header h1 {
-  margin: 0;
-  font-weight: 900;
-  font-size: 1.25rem;
-}
-.document-wrapper {
-  border: 1px solid var(--french-gray);
-  border-radius: 13px;
-  padding: 1.5rem 1rem;
-  display: flex;
-  flex-direction: column;
-  align-items: stretch;
-}
-.document-card {
-  margin-bottom: 1rem;
-  flex-grow: 1;
-}
-
-.document-preview {
-  border: 1px solid var(--french-gray);
-  border-radius: 7px;
-  color: var(--french-gray);
-}
-.document-details p {
-  display: flex;
-  justify-content: space-between;
-  padding: 0.5rem 0;
-  border-bottom: 1px dotted var(--french-gray);
-  margin-bottom: 0.25rem;
-}
-.btn {
-  background-color: var(--cadet-blue);
-  padding: 0.25rem 1.5rem;
-  text-align: center;
-  color: white;
-  border-radius: 7px;
-  border: 1px solid transparent;
-  text-transform: uppercase;
-  font-size: 0.8rem;
-  transition: background-color 400ms ease-in,
-              border-color 200ms ease-in;
-}
-.btn:hover {
-  background-color: var(--san-juan-blue);
-  border-color: var(--san-juan-blue);
-  cursor: pointer;
-}
-</style>

@@ -11,9 +11,13 @@
     </div>
 </header>
 
+<span id="preload-html" style="display: none;">
+  <%= @document[:data] %>
+</span>
+
 <div
   data-controller="texteditor"
   data-texteditor-id-value="<%= @id %>"
   id="editor"
   class=""
-><@= sanitize @document[:data] %></div>
+></div>
