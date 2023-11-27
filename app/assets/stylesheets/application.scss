@@ -15,6 +15,7 @@
  */
 
 
+
  :root {
   --cadet-blue: #bad9e5;
   --san-juan-blue: #2e486c;
@@ -96,7 +97,7 @@
   width: var(--hover-target-width);
   /* border: 1px solid red; */
   box-shadow: 2px 0px 10px 10px rgba(46, 72, 108, 1.00);
-  /* background-color: transparent; */
+  background-color: white;
   /* transition: background-color 400ms ease-in; */
 }
 .hover-detection:hover {
