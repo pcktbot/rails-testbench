@@ -1,0 +1,12 @@
+<h1>Transactions#index</h1>
+<p>Find me in app/views/transactions/index.html.erb</p>
+
+
+<%= form_with model: @transaction do |form| %>
+  <%= form.label :transaction_category %>
+  <%= form.select :transaction_category,  @categories.map { |category| [category, category] }, { include_blank: true } %>
+  
+  <!-- ... other form fields ... -->
+
+  <%= form.submit "Submit" %>
+<% end %>
