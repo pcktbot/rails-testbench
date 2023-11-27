@@ -1,5 +1,5 @@
 class DocumentsController < ApplicationController
-  before_action :set_document, only: %i[ show edit update destroy ]
+  # before_action :set_document, only: %i[ show edit update destroy ]
 
   layout 'application'
   # GET /documents or /documents.json
@@ -9,8 +9,16 @@ class DocumentsController < ApplicationController
 
   # GET /documents/1 or /documents/1.json
   def show
-    @documents = current_user.documents
-    @document = @documents.find(params[:id])
+    @document = current_user.documents.find(params[:id])
+    Rails.logger.info "Request format: #{request.format}"
+    respond_to do |format|
+      format.html do
+        render partial: "documents/preview",
+                locals: { document: @document },
+                layout: false
+      end
+      # format.html
+    end
   end
 
   # GET /documents/new

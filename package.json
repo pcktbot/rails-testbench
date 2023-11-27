@@ -18,6 +18,6 @@
     "core-js": "^3.33.2",
     "parcel": "^2.10.2",
     "quill": "1.3.6",
-    "sortable": "^2.0.0"
+    "sortablejs": "^1.15.0"
   }
 }

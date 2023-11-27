@@ -5,20 +5,33 @@
   <%= link_to "New document", new_document_path, class: "btn tumeric" %>
 </header>
 
-<section class="documents-section">
-  <div id="documents">
-    <% @documents.each do |document| %>
-    <div class="document-wrapper">
-      <div class="document-card">
-        <h2><%= document.name %></h2>
-        <div class="document-preview"><%= sanitize document[:data] %></div>
-        <div class="document-details">
-          <p>Created At: <span><%= document.created_at.strftime("%B %d, %Y") %></span></p>
-          <p>Updated At: <span><%= document.updated_at.strftime("%B %d, %Y") %></span></p>
+<article class="documents-group">
+  <section class="documents-section">
+    <div id="documents" class="documents-grid">
+      <% @documents.each do |document| %>
+      <div class="document-wrapper">
+        <div class="document-card">
+          <h2><%= document.name %></h2>
+          <div class="document-details">
+            <p class="chip">Created At:</p>
+            <p class="value"><%= document.created_at.strftime("%B %d, %Y") %></p>
+            <p class="chip">Updated At:</p>
+            <p class="value"><%= document.updated_at.strftime("%B %d, %Y") %></p>
+          </div>
         </div>
+        <div class="document-container">
+          <%= link_to "Show", document, class: "btn cadet-blue" %>
+          <%= link_to 'Show =>', document_path(document), data: { turbo_frame: 'show_document' }, class: "btn md-gray" %>
+        </div>
+
       </div>
-      <%= link_to "Show this document", document, class: "btn cadet-blue" %>
+      <% end %>
     </div>
-    <% end %>
-  </div>
-</section>
+  </section>
+
+  <aside class="document-aside">
+    <div class="padding-1">
+      <turbo-frame id="show_document"></turbo-frame>
+    </div>
+  </aside>
+</article>

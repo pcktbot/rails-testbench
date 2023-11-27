@@ -1,0 +1,13 @@
+<turbo-frame id="show_document">
+  <div class="document-card">
+  <h2><%= @document.name %></h2>
+  <div class="document-preview"><%= sanitize @document[:data] %></div>
+
+  <div class="control-actions">
+    <%= link_to "Edit this document", edit_document_path(@document), class: "control-btn md-gray" %>
+    <%= link_to "Back to documents", documents_path, class: "control-btn cadet-blue" %>
+
+    <%= button_to "Destroy this document", @document, method: :delete, class: "control-btn danger" %>
+  </div>
+</div>
+</turbo-frame>
